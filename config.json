@@ -1,6 +1,7 @@
 {
     "modules": [
         "TicketList",
+        "TicketDetail",
         "Dashboard",
         "MainNavigation",
         "UserProfile"

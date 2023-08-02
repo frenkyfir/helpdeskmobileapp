@@ -10,6 +10,8 @@ export 'package:hyper_ui/module/Dashboard/controller/Dashboard_controller.dart';
 export 'package:hyper_ui/module/Dashboard/view/Dashboard_view.dart';
 export 'package:hyper_ui/module/MainNavigation/controller/MainNavigation_controller.dart';
 export 'package:hyper_ui/module/MainNavigation/view/MainNavigation_view.dart';
+export 'package:hyper_ui/module/TicketDetail/controller/TicketDetail_controller.dart';
+export 'package:hyper_ui/module/TicketDetail/view/TicketDetail_view.dart';
 export 'package:hyper_ui/module/TicketList/controller/TicketList_controller.dart';
 export 'package:hyper_ui/module/TicketList/view/TicketList_view.dart';
 export 'package:hyper_ui/module/UserProfile/controller/UserProfile_controller.dart';

@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:hyper_ui/core.dart';
-import '../controller/TicketList_controller.dart';
 
 class TicketlistView extends StatefulWidget {
   const TicketlistView({Key? key}) : super(key: key);
@@ -29,28 +28,36 @@ class TicketlistView extends StatefulWidget {
         ),
         body: TabBarView(
           children: [
-            // OpenTick
-            Column(
-              children: [
-                Container(
-                  decoration: BoxDecoration(color: Colors.yellow[100]),
-                  child: const ListTile(
-                    leading: CircleAvatar(
-                      backgroundImage: NetworkImage(
-                        "https://i.ibb.co/PGv8ZzG/me.jpg",
+            // OpenTicket
+            ListView.builder(
+              itemCount: controller.tickets.length,
+              shrinkWrap: true,
+              padding: EdgeInsets.zero,
+              clipBehavior: Clip.none,
+              itemBuilder: (context, index) {
+                var item = controller.tickets[index];
+                return Column(
+                  children: [
+                    InkWell(
+                      onTap: () => Get.to(TicketdetailView(item: item)),
+                      child: Container(
+                        decoration: BoxDecoration(color: Colors.yellow[100]),
+                        child: ListTile(
+                          leading: CircleAvatar(
+                            backgroundImage: NetworkImage(
+                              "https://i.ibb.co/PGv8ZzG/me.jpg",
+                            ),
+                          ),
+                          title: Text(item["subject"]),
+                          subtitle: Text(item["description"]),
+                        ),
                       ),
                     ),
-                    title: Text("John doe"),
-                    subtitle: Text("john.doe@gmail.com"),
-                    // trailing: Icon(
-                    //   Icons.add,
-                    //   size: 24.0,
-                    // ),
-                  ),
-                ),
-              ],
+                  ],
+                );
+              },
             ),
-            // Pending
+            // PendingTicket
             Container(
               color: Colors.green[100],
             ),
