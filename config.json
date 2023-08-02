@@ -1,0 +1,12 @@
+{
+    "modules": [
+        "TicketList",
+        "Dashboard",
+        "MainNavigation",
+        "UserProfile"
+    ],
+    "module_directory_name": "module",
+    "experimental_mode": false,
+    "unfreezed": true,
+    "use_cubit": false
+}
