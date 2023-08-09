@@ -1,6 +1,5 @@
 
 import 'package:flutter/material.dart';
-import 'package:hyper_ui/state_util.dart';
 import '../view/UserProfile_view.dart';
 
 class UserprofileController extends State<UserprofileView> {

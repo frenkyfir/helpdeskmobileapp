@@ -20,7 +20,7 @@ class TicketlistView extends StatefulWidget {
                 text: "Pending",
               ),
               Tab(
-                text: "Done",
+                text: "Closed",
               ),
             ],
           ),
@@ -40,8 +40,8 @@ class TicketlistView extends StatefulWidget {
                   children: [
                     InkWell(
                       onTap: () => Get.to(TicketdetailView(item: item)),
-                      child: Container(
-                        decoration: BoxDecoration(color: Colors.yellow[100]),
+                      child: Card(
+                        color: Colors.green[100],
                         child: ListTile(
                           leading: CircleAvatar(
                             backgroundImage: NetworkImage(
@@ -49,7 +49,7 @@ class TicketlistView extends StatefulWidget {
                             ),
                           ),
                           title: Text(item["subject"]),
-                          subtitle: Text(item["description"]),
+                          subtitle: Text(item["requester"]),
                         ),
                       ),
                     ),
@@ -62,8 +62,33 @@ class TicketlistView extends StatefulWidget {
               color: Colors.green[100],
             ),
             // Done
-            Container(
-              color: Colors.blue[100],
+            ListView.builder(
+              itemCount: controller.ticketsClosed.length,
+              shrinkWrap: true,
+              padding: EdgeInsets.zero,
+              clipBehavior: Clip.none,
+              itemBuilder: (context, index) {
+                var ticketClosed = controller.ticketsClosed[index];
+                return Column(
+                  children: [
+                    InkWell(
+                      onTap: () => Get.to(TicketdetailView(item: ticketClosed)),
+                      child: Card(
+                        color: Colors.red[100],
+                        child: ListTile(
+                          leading: CircleAvatar(
+                            backgroundImage: NetworkImage(
+                              "https://i.ibb.co/PGv8ZzG/me.jpg",
+                            ),
+                          ),
+                          title: Text(ticketClosed["subject"]),
+                          subtitle: Text(ticketClosed["requester"]),
+                        ),
+                      ),
+                    ),
+                  ],
+                );
+              },
             ),
           ],
         ),

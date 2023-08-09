@@ -30,9 +30,17 @@ class TicketdetailView extends StatefulWidget {
                         enabled: false,
                         label: "Ticket ID",
                         validator: Validator.required,
-                        value: item["ticketId"].toString(),
+                        value: item["ticket_id"].toString(),
                         onChanged: (value) {},
                       ),
+                      QTextField(
+                        enabled: false,
+                        label: "Ticket ID",
+                        validator: Validator.required,
+                        value: item["number"].toString(),
+                        onChanged: (value) {},
+                      ),
+
                       QTextField(
                         enabled: false,
                         label: "Subject",
@@ -43,23 +51,35 @@ class TicketdetailView extends StatefulWidget {
                       QMemoField(
                         label: "Description",
                         validator: Validator.required,
-                        value: item["description"],
+                        value: item["problem_detail"],
                         onChanged: (value) {},
                       ),
                       QDropdownField(
                         label: "Status",
                         validator: Validator.required,
+                        value: item['status'],
                         items: [
                           {
-                            "label": "open",
-                            "value": "open",
+                            "label": "Open",
+                            "value": "Open",
                           },
                           {
-                            "label": "inProgress",
-                            "value": "inProgress",
+                            "label": "Pending",
+                            "value": "Pending",
+                          },
+                          {
+                            "label": "Closed",
+                            "value": "Closed",
                           }
                         ],
                         onChanged: (value, label) {},
+                      ),
+                      QTextField(
+                        enabled: false,
+                        label: "Open By",
+                        validator: Validator.required,
+                        value: item["open_by"].toString(),
+                        onChanged: (value) {},
                       ),
                       // QImagePicker(
                       //   label: "Photo",
@@ -76,6 +96,7 @@ class TicketdetailView extends StatefulWidget {
         ),
       ),
       bottomNavigationBar: Container(
+        width: MediaQuery.of(context).size.width,
         child: ElevatedButton(
           style: ElevatedButton.styleFrom(
             backgroundColor: Colors.blueGrey,

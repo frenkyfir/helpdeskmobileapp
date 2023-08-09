@@ -26,12 +26,7 @@ class MainnavigationView extends StatefulWidget {
             Container(
               color: Colors.green,
             ),
-            Container(
-              color: Colors.blue,
-            ),
-            Container(
-              color: Colors.purple,
-            ),
+            UserprofileView(),
           ],
         ),
         bottomNavigationBar: BottomNavigationBar(
