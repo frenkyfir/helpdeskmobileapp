@@ -8,6 +8,9 @@ class TicketdetailController extends State<TicketdetailView> {
   @override
   void initState() {
     instance = this;
+    // if (isEditMode) {
+    //   status = widget.item["status"];
+    // }
     super.initState();
   }
 
@@ -16,4 +19,10 @@ class TicketdetailController extends State<TicketdetailView> {
 
   @override
   Widget build(BuildContext context) => widget.build(context, this);
+
+  // String? status;
+  // String? status;
+  // String? status;
+
+  bool get isEditMode => widget.item != null;
 }

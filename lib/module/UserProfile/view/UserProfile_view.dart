@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:hyper_ui/core.dart';
-import '../controller/UserProfile_controller.dart';
 
 class UserprofileView extends StatefulWidget {
   const UserprofileView({Key? key}) : super(key: key);
@@ -19,6 +18,7 @@ class UserprofileView extends StatefulWidget {
         child: Container(
           padding: const EdgeInsets.all(20.0),
           child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Row(
                 children: [
@@ -34,11 +34,15 @@ class UserprofileView extends StatefulWidget {
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text(
-                        "Frenky Firnando Antoni",
-                        style: TextStyle(
-                          fontSize: 18.0,
-                        ),
+                      Row(
+                        children: [
+                          Text(
+                            "Frenky Firnando Antoni",
+                            style: TextStyle(
+                              fontSize: 18.0,
+                            ),
+                          ),
+                        ],
                       ),
                       Text(
                         "frenkyfir@gmail.com",
@@ -62,26 +66,60 @@ class UserprofileView extends StatefulWidget {
                 ],
               ),
               const SizedBox(
-                height: 10.0,
+                height: 20.0,
               ),
-              ListView.builder(
-                itemCount: 3,
-                shrinkWrap: true,
-                padding: EdgeInsets.zero,
-                clipBehavior: Clip.none,
-                itemBuilder: (context, index) {
-                  var item = {};
-                  return Container(
-                    child: Card(
-                      child: const ListTile(
-                        leading: Icon(Icons.share),
-                        minLeadingWidth: 0.0,
-                        title: Text("John doe"),
-                      ),
-                    ),
-                  );
-                },
+              InkWell(
+                onTap: () {},
+                child: const ListTile(
+                  leading: Icon(MdiIcons.informationVariantCircle),
+                  minLeadingWidth: 0.0,
+                  title: Text("Info Profile"),
+                  trailing: Icon(
+                    Icons.chevron_right,
+                    size: 24.0,
+                  ),
+                ),
               ),
+              Divider(),
+              InkWell(
+                onTap: () {},
+                child: const ListTile(
+                  leading: Icon(MdiIcons.formTextboxPassword),
+                  minLeadingWidth: 0.0,
+                  title: Text("Change Password"),
+                  trailing: Icon(
+                    Icons.chevron_right,
+                    size: 24.0,
+                  ),
+                ),
+              ),
+              Divider(),
+              InkWell(
+                onTap: () {},
+                child: const ListTile(
+                  leading: Icon(MdiIcons.frequentlyAskedQuestions),
+                  minLeadingWidth: 0.0,
+                  title: Text("FAQ"),
+                  trailing: Icon(
+                    Icons.chevron_right,
+                    size: 24.0,
+                  ),
+                ),
+              ),
+              Divider(),
+              InkWell(
+                onTap: () {},
+                child: const ListTile(
+                  leading: Icon(MdiIcons.informationVariantCircleOutline),
+                  minLeadingWidth: 0.0,
+                  title: Text("TOS"),
+                  trailing: Icon(
+                    Icons.chevron_right,
+                    size: 24.0,
+                  ),
+                ),
+              ),
+              Divider(),
             ],
           ),
         ),

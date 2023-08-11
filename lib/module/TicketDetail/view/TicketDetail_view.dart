@@ -30,13 +30,6 @@ class TicketdetailView extends StatefulWidget {
                         enabled: false,
                         label: "Ticket ID",
                         validator: Validator.required,
-                        value: item["ticket_id"].toString(),
-                        onChanged: (value) {},
-                      ),
-                      QTextField(
-                        enabled: false,
-                        label: "Ticket ID",
-                        validator: Validator.required,
                         value: item["number"].toString(),
                         onChanged: (value) {},
                       ),
@@ -78,7 +71,13 @@ class TicketdetailView extends StatefulWidget {
                         enabled: false,
                         label: "Open By",
                         validator: Validator.required,
-                        value: item["open_by"].toString(),
+                        value: item["open_by"],
+                        onChanged: (value) {},
+                      ),
+                      QMemoField(
+                        label: "Resolution",
+                        validator: Validator.required,
+                        value: item["resolution"],
                         onChanged: (value) {},
                       ),
                       // QImagePicker(
@@ -95,15 +94,9 @@ class TicketdetailView extends StatefulWidget {
           ),
         ),
       ),
-      bottomNavigationBar: Container(
-        width: MediaQuery.of(context).size.width,
-        child: ElevatedButton(
-          style: ElevatedButton.styleFrom(
-            backgroundColor: Colors.blueGrey,
-          ),
-          onPressed: () {},
-          child: const Text("Update"),
-        ),
+      bottomNavigationBar: QButton(
+        label: "Update",
+        onPressed: () {},
       ),
     );
   }
