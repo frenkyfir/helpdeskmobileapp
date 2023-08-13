@@ -47,6 +47,13 @@ class TicketdetailView extends StatefulWidget {
                         value: item["problem_detail"],
                         onChanged: (value) {},
                       ),
+                      QTextField(
+                        enabled: false,
+                        label: "Assign To",
+                        validator: Validator.required,
+                        value: item["user_id.name"],
+                        onChanged: (value) {},
+                      ),
                       QDropdownField(
                         label: "Status",
                         validator: Validator.required,
@@ -78,7 +85,9 @@ class TicketdetailView extends StatefulWidget {
                         label: "Resolution",
                         validator: Validator.required,
                         value: item["resolution"],
-                        onChanged: (value) {},
+                        onChanged: (value) {
+                          controller.resolution = value;
+                        },
                       ),
                       // QImagePicker(
                       //   label: "Photo",
@@ -96,7 +105,7 @@ class TicketdetailView extends StatefulWidget {
       ),
       bottomNavigationBar: QButton(
         label: "Update",
-        onPressed: () {},
+        onPressed: () => controller.doSave(),
       ),
     );
   }

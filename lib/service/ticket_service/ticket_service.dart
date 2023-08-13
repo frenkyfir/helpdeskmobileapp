@@ -29,7 +29,7 @@ class TicketService {
 
   addTicket(Map item) async {
     await Dio().post(
-      "http://localhost:8000/api/tickets",
+      "http://localhost:8000/api/createtickets",
       options: Options(
         headers: {
           "Content-Type": "application/json",
@@ -44,7 +44,7 @@ class TicketService {
     required Map item,
   }) async {
     await Dio().post(
-      "http://localhost:8000/api/tickets/$id",
+      "http://localhost:8000/api/updatetickets/$id",
       options: Options(
         headers: {
           "Content-Type": "application/json",
