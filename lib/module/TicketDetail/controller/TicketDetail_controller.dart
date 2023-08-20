@@ -11,11 +11,14 @@ class TicketdetailController extends State<TicketdetailView> {
   @override
   void initState() {
     instance = this;
-
     if (isEditMode) {
-      // status = widget.item["status"];
-      resolution = widget.item["resolution"];
-      problem_detail = widget.item["problem_detail"];
+      number = widget.item?["number"];
+      subject = widget.item?["subject"];
+      description = widget.item?["description"];
+      userName = widget.item?["user"]["name"];
+      openBy = widget.item?["open_by"];
+      resolution = widget.item?["resolution"];
+      problemDetail = widget.item?["problem_detail"];
     }
     super.initState();
   }
@@ -29,20 +32,22 @@ class TicketdetailController extends State<TicketdetailView> {
   bool get isEditMode => widget.item != null;
 
   // String? status;
+  String? number;
+  String? subject;
+  String? requester;
+  String? problemDetail;
   String? resolution;
-  String? problem_detail;
+  String? description;
+  String? userName;
+  String? openBy;
 
   doSave() async {
     if (isEditMode) {
-      await TicketService().updateTicket(id: widget.item["ticket_id"], item: {
-        "resolution": resolution,
-        "problem_detail": problem_detail,
-      });
-    } else {
-      await TicketService().addTicket({
+      await TicketService().updateTicket(id: widget.item?["ticket_id"], item: {
         "resolution": resolution,
       });
     }
     Get.back();
+    setState(() {});
   }
 }

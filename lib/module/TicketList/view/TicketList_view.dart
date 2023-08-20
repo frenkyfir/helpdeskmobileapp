@@ -39,7 +39,10 @@ class TicketlistView extends StatefulWidget {
                 return Column(
                   children: [
                     InkWell(
-                      onTap: () => Get.to(TicketdetailView(item: item)),
+                      onTap: () async {
+                        await Get.to(TicketdetailView(item: item));
+                        await controller.getTickets();
+                      },
                       child: Card(
                         color: Colors.green[100],
                         child: ListTile(
@@ -72,7 +75,10 @@ class TicketlistView extends StatefulWidget {
                 return Column(
                   children: [
                     InkWell(
-                      onTap: () => Get.to(TicketdetailView(item: ticketClosed)),
+                      onTap: () async {
+                        await controller.getTicketsClosed();
+                        await Get.to(TicketdetailView(item: ticketClosed));
+                      },
                       child: Card(
                         color: Colors.red[100],
                         child: ListTile(
@@ -94,7 +100,6 @@ class TicketlistView extends StatefulWidget {
         ),
       ),
     );
-    ;
   }
 
   @override

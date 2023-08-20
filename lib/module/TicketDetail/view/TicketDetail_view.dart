@@ -2,10 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:hyper_ui/core.dart';
 
 class TicketdetailView extends StatefulWidget {
-  final Map item;
+  final Map? item;
   const TicketdetailView({
     Key? key,
-    required this.item,
+    this.item,
   }) : super(key: key);
 
   Widget build(context, TicketdetailController controller) {
@@ -30,34 +30,41 @@ class TicketdetailView extends StatefulWidget {
                         enabled: false,
                         label: "Ticket ID",
                         validator: Validator.required,
-                        value: item["number"].toString(),
-                        onChanged: (value) {},
+                        value: controller.number,
+                        onChanged: (value) {
+                          controller.number = value;
+                        },
                       ),
 
                       QTextField(
                         enabled: false,
                         label: "Subject",
                         validator: Validator.required,
-                        value: item["subject"],
-                        onChanged: (value) {},
+                        value: controller.subject,
+                        onChanged: (value) {
+                          controller.subject = value;
+                        },
                       ),
                       QMemoField(
                         label: "Description",
                         validator: Validator.required,
-                        value: item["problem_detail"],
-                        onChanged: (value) {},
+                        value: controller.description,
+                        onChanged: (value) {
+                          controller.description = value;
+                        },
                       ),
                       QTextField(
                         enabled: false,
                         label: "Assign To",
                         validator: Validator.required,
-                        value: item["user_id.name"],
-                        onChanged: (value) {},
+                        value: controller.userName,
+                        onChanged: (value) {
+                          controller.userName = value;
+                        },
                       ),
                       QDropdownField(
                         label: "Status",
                         validator: Validator.required,
-                        value: item['status'],
                         items: [
                           {
                             "label": "Open",
@@ -78,13 +85,13 @@ class TicketdetailView extends StatefulWidget {
                         enabled: false,
                         label: "Open By",
                         validator: Validator.required,
-                        value: item["open_by"],
+                        value: controller.openBy,
                         onChanged: (value) {},
                       ),
                       QMemoField(
                         label: "Resolution",
                         validator: Validator.required,
-                        value: item["resolution"],
+                        value: controller.resolution,
                         onChanged: (value) {
                           controller.resolution = value;
                         },
@@ -105,7 +112,9 @@ class TicketdetailView extends StatefulWidget {
       ),
       bottomNavigationBar: QButton(
         label: "Update",
-        onPressed: () => controller.doSave(),
+        onPressed: () async {
+          await controller.doSave();
+        },
       ),
     );
   }
