@@ -52,7 +52,7 @@ class UserprofileView extends StatefulWidget {
                         ),
                       ),
                       Text(
-                        "Mitrais Software Development",
+                        "xxxxxxxxxx",
                         style: TextStyle(
                           fontSize: 12.0,
                           color: Colors.green,

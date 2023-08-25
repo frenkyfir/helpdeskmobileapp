@@ -62,25 +62,27 @@ class TicketdetailView extends StatefulWidget {
                           controller.userName = value;
                         },
                       ),
-                      QDropdownField(
-                        label: "Status",
-                        validator: Validator.required,
-                        items: [
-                          {
-                            "label": "Open",
-                            "value": "Open",
-                          },
-                          {
-                            "label": "Pending",
-                            "value": "Pending",
-                          },
-                          {
-                            "label": "Closed",
-                            "value": "Closed",
-                          }
-                        ],
-                        onChanged: (value, label) {},
-                      ),
+                      // QDropdownField(
+                      //   label: "Status",
+                      //   validator: Validator.required,
+                      //   items: controller.items,
+                      //   onChanged: (value, label) {},
+                      // ),
+                      Builder(builder: (context) {
+                        List<Map<String, dynamic>> items = [];
+                        for (var item in controller.statusTicket) {
+                          items.add({
+                            "label": item["name"],
+                            "value": item["id"],
+                          });
+                        }
+                        return QDropdownField(
+                          label: "Status",
+                          validator: Validator.required,
+                          items: items,
+                          onChanged: (value, label) {},
+                        );
+                      }),
                       QTextField(
                         enabled: false,
                         label: "Open By",

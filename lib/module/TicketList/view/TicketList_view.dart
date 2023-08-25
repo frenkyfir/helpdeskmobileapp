@@ -61,8 +61,30 @@ class TicketlistView extends StatefulWidget {
               },
             ),
             // PendingTicket
-            Container(
-              color: Colors.green[100],
+            ListView.builder(
+              itemCount: controller.statusList.length,
+              shrinkWrap: true,
+              padding: EdgeInsets.zero,
+              clipBehavior: Clip.none,
+              itemBuilder: (context, index) {
+                var statusesList = controller.statusList[index];
+                return Column(
+                  children: [
+                    Card(
+                      color: Colors.red[100],
+                      child: ListTile(
+                        leading: CircleAvatar(
+                          backgroundImage: NetworkImage(
+                            "https://i.ibb.co/PGv8ZzG/me.jpg",
+                          ),
+                        ),
+                        // title: Text(statusesList["name"]),
+                        // subtitle: Text(statusesList["requester"]),
+                      ),
+                    ),
+                  ],
+                );
+              },
             ),
             // Done
             ListView.builder(

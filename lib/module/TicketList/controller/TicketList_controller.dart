@@ -22,6 +22,7 @@ class TicketlistController extends State<TicketlistView> {
 
   List tickets = [];
   List ticketsClosed = [];
+  List statusList = [];
 
   getTickets() async {
     tickets = await TicketService().getTickets();
@@ -30,6 +31,11 @@ class TicketlistController extends State<TicketlistView> {
 
   getTicketsClosed() async {
     ticketsClosed = await TicketService().getTicketsClosed();
+    setState(() {});
+  }
+
+  getStatusList() async {
+    statusList = await TicketService().getStatuses();
     setState(() {});
   }
 }
