@@ -11,6 +11,7 @@ class TicketlistController extends State<TicketlistView> {
     instance = this;
     getTickets();
     getTicketsClosed();
+    // getStatusList();
     super.initState();
   }
 
@@ -22,7 +23,6 @@ class TicketlistController extends State<TicketlistView> {
 
   List tickets = [];
   List ticketsClosed = [];
-  List statusList = [];
 
   getTickets() async {
     tickets = await TicketService().getTickets();
@@ -34,8 +34,8 @@ class TicketlistController extends State<TicketlistView> {
     setState(() {});
   }
 
-  getStatusList() async {
-    statusList = await TicketService().getStatuses();
-    setState(() {});
-  }
+  // getStatusList() async {
+  //   statusList = await TicketService().getStatuses();
+  //   setState(() {});
+  // }
 }

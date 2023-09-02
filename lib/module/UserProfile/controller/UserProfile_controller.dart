@@ -1,22 +1,19 @@
-
 import 'package:flutter/material.dart';
 import '../view/UserProfile_view.dart';
 
 class UserprofileController extends State<UserprofileView> {
-    static late UserprofileController instance;
-    late UserprofileView view;
+  static late UserprofileController instance;
+  late UserprofileView view;
 
-    @override
-    void initState() {
-        instance = this;
-        super.initState();
-    }
+  @override
+  void initState() {
+    instance = this;
+    super.initState();
+  }
 
-    @override
-    void dispose() => super.dispose();
+  @override
+  void dispose() => super.dispose();
 
-    @override
-    Widget build(BuildContext context) => widget.build(context, this);
+  @override
+  Widget build(BuildContext context) => widget.build(context, this);
 }
-        
-    

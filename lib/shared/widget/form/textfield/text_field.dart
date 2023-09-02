@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 
 class QTextField extends StatefulWidget {
@@ -95,5 +94,3 @@ class _QTextFieldState extends State<QTextField> {
     );
   }
 }
-
-

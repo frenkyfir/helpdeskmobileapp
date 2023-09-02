@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:hyper_ui/core.dart';
 
@@ -35,5 +34,3 @@ class QActionButton extends StatelessWidget {
     );
   }
 }
-
-

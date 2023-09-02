@@ -1,10 +1,12 @@
 {
     "modules": [
         "TicketList",
+        "TicketForm",
         "TicketDetail",
         "Dashboard",
         "MainNavigation",
-        "UserProfile"
+        "UserProfile",
+        "Login"
     ],
     "module_directory_name": "module",
     "experimental_mode": false,

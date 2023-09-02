@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 
 class QSwitch extends StatefulWidget {
@@ -89,5 +88,3 @@ class _QSwitchState extends State<QSwitch> {
     );
   }
 }
-
-

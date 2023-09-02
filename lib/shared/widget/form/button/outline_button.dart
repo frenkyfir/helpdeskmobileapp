@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 
 class QOutlineButton extends StatelessWidget {
@@ -36,5 +35,3 @@ class QOutlineButton extends StatelessWidget {
     );
   }
 }
-
-

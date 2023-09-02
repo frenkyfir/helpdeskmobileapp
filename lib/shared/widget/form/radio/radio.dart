@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 
 class QRadioField extends StatefulWidget {
@@ -95,5 +94,3 @@ class _QRadioFieldState extends State<QRadioField> {
     );
   }
 }
-
-

@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:hyper_ui/core.dart';
 
@@ -33,5 +32,3 @@ class QButton extends StatelessWidget {
     );
   }
 }
-
-

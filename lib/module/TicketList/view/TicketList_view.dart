@@ -40,8 +40,8 @@ class TicketlistView extends StatefulWidget {
                   children: [
                     InkWell(
                       onTap: () async {
-                        await Get.to(TicketdetailView(item: item));
                         await controller.getTickets();
+                        await Get.to(TicketdetailView(item: item));
                       },
                       child: Card(
                         color: Colors.green[100],
@@ -62,24 +62,30 @@ class TicketlistView extends StatefulWidget {
             ),
             // PendingTicket
             ListView.builder(
-              itemCount: controller.statusList.length,
+              itemCount: controller.ticketsClosed.length,
               shrinkWrap: true,
               padding: EdgeInsets.zero,
               clipBehavior: Clip.none,
               itemBuilder: (context, index) {
-                var statusesList = controller.statusList[index];
+                var ticketClosed = controller.ticketsClosed[index];
                 return Column(
                   children: [
-                    Card(
-                      color: Colors.red[100],
-                      child: ListTile(
-                        leading: CircleAvatar(
-                          backgroundImage: NetworkImage(
-                            "https://i.ibb.co/PGv8ZzG/me.jpg",
+                    InkWell(
+                      onTap: () async {
+                        await controller.getTicketsClosed();
+                        await Get.to(TicketdetailView(item: ticketClosed));
+                      },
+                      child: Card(
+                        color: Colors.red[100],
+                        child: ListTile(
+                          leading: CircleAvatar(
+                            backgroundImage: NetworkImage(
+                              "https://i.ibb.co/PGv8ZzG/me.jpg",
+                            ),
                           ),
+                          title: Text(ticketClosed["subject"]),
+                          subtitle: Text(ticketClosed["requester"]),
                         ),
-                        // title: Text(statusesList["name"]),
-                        // subtitle: Text(statusesList["requester"]),
                       ),
                     ),
                   ],
@@ -119,6 +125,10 @@ class TicketlistView extends StatefulWidget {
               },
             ),
           ],
+        ),
+        floatingActionButton: FloatingActionButton(
+          child: const Icon(Icons.add),
+          onPressed: () => Get.to(TicketformView()),
         ),
       ),
     );

@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 
 class QCategoryPicker extends StatefulWidget {
@@ -157,5 +156,3 @@ class _QCategoryPickerState extends State<QCategoryPicker> {
     );
   }
 }
-
-

@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 
 class QDropdownField extends StatefulWidget {
@@ -174,5 +173,3 @@ class _QDropdownFieldState extends State<QDropdownField> {
     );
   }
 }
-
-

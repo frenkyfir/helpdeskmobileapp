@@ -10,16 +10,12 @@ class TicketdetailController extends State<TicketdetailView> {
 
   @override
   void initState() {
-    getStatus();
     instance = this;
     if (isEditMode) {
-      status = widget.item?["status"]["name"];
-      statusId = widget.item?["statusid"];
-
       number = widget.item?["number"];
       subject = widget.item?["subject"];
       description = widget.item?["description"];
-      userName = widget.item?["user"]["name"];
+      userName = widget.item?["users"]["name"];
       openBy = widget.item?["open_by"];
       resolution = widget.item?["resolution"];
       problemDetail = widget.item?["problem_detail"];
@@ -35,8 +31,6 @@ class TicketdetailController extends State<TicketdetailView> {
 
   bool get isEditMode => widget.item != null;
 
-  String? status;
-  int? statusId;
   String? number;
   String? subject;
   String? requester;

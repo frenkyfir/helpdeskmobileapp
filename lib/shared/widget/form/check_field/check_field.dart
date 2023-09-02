@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 
 class QCheckField extends StatefulWidget {
@@ -112,5 +111,3 @@ class _QCheckFieldState extends State<QCheckField> {
     );
   }
 }
-
-
