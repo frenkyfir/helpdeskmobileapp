@@ -12,14 +12,14 @@ class TicketdetailController extends State<TicketdetailView> {
   void initState() {
     instance = this;
     if (isEditMode) {
+      statusId = widget.item?["statusid"];
       number = widget.item?["number"];
       subject = widget.item?["subject"];
       description = widget.item?["description"];
-      userName = widget.item?["users"]["name"];
-      openBy = widget.item?["open_by"];
       resolution = widget.item?["resolution"];
       problemDetail = widget.item?["problem_detail"];
     }
+    getStatusDetail();
     super.initState();
   }
 
@@ -31,6 +31,8 @@ class TicketdetailController extends State<TicketdetailView> {
 
   bool get isEditMode => widget.item != null;
 
+  String? status;
+  int? statusId;
   String? number;
   String? subject;
   String? requester;
@@ -50,12 +52,18 @@ class TicketdetailController extends State<TicketdetailView> {
     setState(() {});
   }
 
-  List statusTicket = [];
-
-  getStatus() async {
-    statusTicket = await TicketService().getStatuses();
+  List statusDetailTicket = [];
+  getStatusDetail() async {
+    statusDetailTicket = await TicketService().getStatuses();
     setState(() {});
   }
+
+  // List statusTicket = [];
+
+  // getStatus() async {
+  //   statusTicket = await TicketService().getStatuses();
+  //   setState(() {});
+  // }
   // getTickets() async {
   //   tickets = await TicketService().getTickets();
   //   for (var dropdownItems in tickets) {

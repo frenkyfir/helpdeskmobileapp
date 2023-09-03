@@ -42,22 +42,41 @@ class TicketformView extends StatefulWidget {
                     const SizedBox(
                       height: 10.0,
                     ),
-                    QDropdownField(
-                      label: "Assign To ",
-                      validator: Validator.required,
-                      helper: "Select Support",
-                      items: [
-                        {
-                          "label": "Admin",
-                          "value": 1,
-                        },
-                        {
-                          "label": "Staff",
-                          "value": 2,
+                    if (controller.usersTicketForm.isNotEmpty)
+                      Builder(builder: (context) {
+                        List<Map<String, dynamic>> items = [];
+                        for (var item in controller.usersTicketForm) {
+                          items.add({
+                            "label": item["name"],
+                            "value": item["id"],
+                          });
                         }
-                      ],
-                      onChanged: (value, label) {},
+                        return QDropdownField(
+                          label: "Users",
+                          validator: Validator.required,
+                          items: items,
+                          onChanged: (value, label) {},
+                        );
+                      }),
+                    const SizedBox(
+                      height: 10.0,
                     ),
+                    if (controller.statusTicketForm.isNotEmpty)
+                      Builder(builder: (context) {
+                        List<Map<String, dynamic>> items = [];
+                        for (var item in controller.statusTicketForm) {
+                          items.add({
+                            "label": item["name"],
+                            "value": item["id"],
+                          });
+                        }
+                        return QDropdownField(
+                          label: "Status",
+                          validator: Validator.required,
+                          items: items,
+                          onChanged: (value, label) {},
+                        );
+                      }),
                     const SizedBox(
                       height: 10.0,
                     ),

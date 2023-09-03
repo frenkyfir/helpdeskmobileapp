@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:hyper_ui/core.dart';
-import '../view/TicketForm_view.dart';
 
 class TicketformController extends State<TicketformView> {
   static late TicketformController instance;
@@ -9,6 +8,9 @@ class TicketformController extends State<TicketformView> {
   @override
   void initState() {
     instance = this;
+    getStatusTicketForm();
+    getUsersTicketForm();
+
     super.initState();
   }
 
@@ -17,4 +19,27 @@ class TicketformController extends State<TicketformView> {
 
   @override
   Widget build(BuildContext context) => widget.build(context, this);
+
+  List statusTicketForm = [];
+  getStatusTicketForm() async {
+    statusTicketForm = await TicketService().getStatuses();
+    setState(() {});
+  }
+
+  List usersTicketForm = [];
+  getUsersTicketForm() async {
+    usersTicketForm = await TicketService().getUsers();
+    setState(() {});
+  }
+
+  // getTickets() async {
+  //   statusTicket = await TicketService().getTickets();
+  //   for (var dropdownItems in statusTicket) {
+  //     dropdownItems.add({
+  //       "label": dropdownItems["name"],
+  //       "value": dropdownItems["id"],
+  //     });
+  //   }
+  //   setState(() {});
+  // }
 }
