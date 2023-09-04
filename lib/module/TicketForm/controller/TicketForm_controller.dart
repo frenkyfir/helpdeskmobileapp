@@ -10,7 +10,9 @@ class TicketformController extends State<TicketformView> {
     instance = this;
     getStatusTicketForm();
     getUsersTicketForm();
-
+    getChannelsTicketForm();
+    getPrioritysTicketForm();
+    getCategorysTicketForm();
     super.initState();
   }
 
@@ -32,14 +34,21 @@ class TicketformController extends State<TicketformView> {
     setState(() {});
   }
 
-  // getTickets() async {
-  //   statusTicket = await TicketService().getTickets();
-  //   for (var dropdownItems in statusTicket) {
-  //     dropdownItems.add({
-  //       "label": dropdownItems["name"],
-  //       "value": dropdownItems["id"],
-  //     });
-  //   }
-  //   setState(() {});
-  // }
+  List channelsTicketForm = [];
+  getChannelsTicketForm() async {
+    channelsTicketForm = await TicketService().getChannels();
+    setState(() {});
+  }
+
+  List prioritysTicketForm = [];
+  getPrioritysTicketForm() async {
+    prioritysTicketForm = await TicketService().getPrioritys();
+    setState(() {});
+  }
+
+  List categorysTicketForm = [];
+  getCategorysTicketForm() async {
+    categorysTicketForm = await TicketService().getCategorys();
+    setState(() {});
+  }
 }

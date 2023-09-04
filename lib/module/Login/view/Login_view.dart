@@ -24,7 +24,7 @@ class LoginView extends StatefulWidget {
                 children: const [
                   Expanded(
                     child: Text(
-                      "Welcome \nto MagicBook",
+                      "Welcome \nto Helpdesk Ticketing App",
                       style: TextStyle(
                         fontSize: 30.0,
                         fontWeight: FontWeight.bold,

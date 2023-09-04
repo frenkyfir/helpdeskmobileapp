@@ -52,7 +52,7 @@ class TicketformView extends StatefulWidget {
                           });
                         }
                         return QDropdownField(
-                          label: "Users",
+                          label: "Support",
                           validator: Validator.required,
                           items: items,
                           onChanged: (value, label) {},
@@ -80,59 +80,60 @@ class TicketformView extends StatefulWidget {
                     const SizedBox(
                       height: 10.0,
                     ),
-                    QDropdownField(
-                      label: "Channel",
-                      validator: Validator.required,
-                      helper: "Select Channel",
-                      items: [
-                        {
-                          "label": "Admin",
-                          "value": 1,
-                        },
-                        {
-                          "label": "Staff",
-                          "value": 2,
+                    if (controller.channelsTicketForm.isNotEmpty)
+                      Builder(builder: (context) {
+                        List<Map<String, dynamic>> items = [];
+                        for (var item in controller.channelsTicketForm) {
+                          items.add({
+                            "label": item["name"],
+                            "value": item["id"],
+                          });
                         }
-                      ],
-                      onChanged: (value, label) {},
-                    ),
+                        return QDropdownField(
+                          label: "Channel",
+                          validator: Validator.required,
+                          items: items,
+                          onChanged: (value, label) {},
+                        );
+                      }),
                     const SizedBox(
                       height: 10.0,
                     ),
-                    QDropdownField(
-                      label: "Priority ",
-                      validator: Validator.required,
-                      items: [
-                        {
-                          "label": "Admin",
-                          "value": 1,
-                        },
-                        {
-                          "label": "Staff",
-                          "value": 2,
+                    if (controller.prioritysTicketForm.isNotEmpty)
+                      Builder(builder: (context) {
+                        List<Map<String, dynamic>> items = [];
+                        for (var item in controller.prioritysTicketForm) {
+                          items.add({
+                            "label": item["name"],
+                            "value": item["id"],
+                          });
                         }
-                      ],
-                      onChanged: (value, label) {},
-                    ),
+                        return QDropdownField(
+                          label: "Priority",
+                          validator: Validator.required,
+                          items: items,
+                          onChanged: (value, label) {},
+                        );
+                      }),
                     const SizedBox(
                       height: 10.0,
                     ),
-                    QDropdownField(
-                      label: "Category ",
-                      validator: Validator.required,
-                      helper: "select Category",
-                      items: [
-                        {
-                          "label": "Admin",
-                          "value": 1,
-                        },
-                        {
-                          "label": "Staff",
-                          "value": 2,
+                    if (controller.categorysTicketForm.isNotEmpty)
+                      Builder(builder: (context) {
+                        List<Map<String, dynamic>> items = [];
+                        for (var item in controller.categorysTicketForm) {
+                          items.add({
+                            "label": item["name"],
+                            "value": item["id"],
+                          });
                         }
-                      ],
-                      onChanged: (value, label) {},
-                    ),
+                        return QDropdownField(
+                          label: "Category",
+                          validator: Validator.required,
+                          items: items,
+                          onChanged: (value, label) {},
+                        );
+                      }),
                     const SizedBox(
                       height: 10.0,
                     ),
