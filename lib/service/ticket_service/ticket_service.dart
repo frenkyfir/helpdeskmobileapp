@@ -1,7 +1,7 @@
 import 'package:dio/dio.dart';
 
 class TicketService {
-  getTickets() async {
+  Future<List> getTickets() async {
     var response = await Dio().get(
       "http://localhost:8000/api/get-open-tickets",
       options: Options(
@@ -27,7 +27,16 @@ class TicketService {
     return obj["data"];
   }
 
-  addTicket(Map item) async {
+  Future addTicket(
+    String subject,
+    String requester,
+    int priority_id,
+    int category_id,
+    int user_id,
+    int channel_id,
+    int status_id,
+    String problem_detail,
+  ) async {
     await Dio().post(
       "http://localhost:8000/api/createtickets",
       options: Options(
@@ -35,11 +44,20 @@ class TicketService {
           "Content-Type": "application/json",
         },
       ),
-      data: item,
+      data: {
+        "subject": subject,
+        "requester": requester,
+        "priority_id": priority_id,
+        "category_id": category_id,
+        "status_id": status_id,
+        "user_id": user_id,
+        "channel_id": channel_id,
+        "problem_detail": problem_detail
+      },
     );
   }
 
-  updateTicket({
+  Future updateTicket({
     required int id,
     required Map item,
   }) async {
@@ -54,6 +72,24 @@ class TicketService {
     );
   }
 
+  // Future updateTicket({
+  //   required int id,
+  // }) async {
+  //   var response = await Dio().put(
+  //     "https://reqres.in/api/users/$id",
+  //     options: Options(
+  //       headers: {
+  //         "Content-Type": "application/json",
+  //       },
+  //     ),
+  //     data: {
+  //       "name": "granfield",
+  //       "job": "system analyst",
+  //     },
+  //   );
+  //   Map obj = response.data;
+  // }
+
   deleteTicket(
     int id,
   ) async {
@@ -65,70 +101,5 @@ class TicketService {
         },
       ),
     );
-  }
-
-  getStatuses() async {
-    var response = await Dio().get(
-      "http://localhost:8000/api/get-status",
-      options: Options(
-        headers: {
-          "Content-Type": "application/json",
-        },
-      ),
-    );
-    Map obj = response.data;
-    return obj["data"];
-  }
-
-  getUsers() async {
-    var response = await Dio().get(
-      "http://localhost:8000/api/get-users",
-      options: Options(
-        headers: {
-          "Content-Type": "application/json",
-        },
-      ),
-    );
-    Map obj = response.data;
-    return obj["data"];
-  }
-
-  getChannels() async {
-    var response = await Dio().get(
-      "http://localhost:8000/api/get-channels",
-      options: Options(
-        headers: {
-          "Content-Type": "application/json",
-        },
-      ),
-    );
-    Map obj = response.data;
-    return obj["data"];
-  }
-
-  getPrioritys() async {
-    var response = await Dio().get(
-      "http://localhost:8000/api/get-prioritys",
-      options: Options(
-        headers: {
-          "Content-Type": "application/json",
-        },
-      ),
-    );
-    Map obj = response.data;
-    return obj["data"];
-  }
-
-  getCategorys() async {
-    var response = await Dio().get(
-      "http://localhost:8000/api/get-categorys",
-      options: Options(
-        headers: {
-          "Content-Type": "application/json",
-        },
-      ),
-    );
-    Map obj = response.data;
-    return obj["data"];
   }
 }

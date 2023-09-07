@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:hyper_ui/service/status_service/status_service.dart';
 import 'package:hyper_ui/service/ticket_service/ticket_service.dart';
+import 'package:hyper_ui/service/user_service/user_service.dart';
 
 import '../../../state_util.dart';
 import '../view/TicketDetail_view.dart';
@@ -12,14 +14,16 @@ class TicketdetailController extends State<TicketdetailView> {
   void initState() {
     instance = this;
     if (isEditMode) {
-      statusId = widget.item?["statusid"];
+      status_id = widget.item?["status_id"];
       number = widget.item?["number"];
+      user_id = widget.item?["user_id"];
       subject = widget.item?["subject"];
-      description = widget.item?["description"];
+      problemDetail = widget.item?["problemDetail"];
       resolution = widget.item?["resolution"];
       problemDetail = widget.item?["problem_detail"];
     }
     getStatusDetail();
+    getUsersTicketForm();
     super.initState();
   }
 
@@ -32,11 +36,13 @@ class TicketdetailController extends State<TicketdetailView> {
   bool get isEditMode => widget.item != null;
 
   String? status;
-  int? statusId;
+  int? status_id;
+  int? user_id;
   String? number;
   String? subject;
   String? requester;
   String? problemDetail;
+  String? assignTo;
   String? resolution;
   String? description;
   String? userName;
@@ -46,15 +52,22 @@ class TicketdetailController extends State<TicketdetailView> {
     if (isEditMode) {
       await TicketService().updateTicket(id: widget.item?["ticket_id"], item: {
         "resolution": resolution,
+        "status_id": status_id,
+        "user_id": user_id,
       });
     }
     Get.back();
-    setState(() {});
   }
 
   List statusDetailTicket = [];
   getStatusDetail() async {
-    statusDetailTicket = await TicketService().getStatuses();
+    statusDetailTicket = await StatusService().getStatuses();
+    setState(() {});
+  }
+
+  List usersTicketForm = [];
+  getUsersTicketForm() async {
+    usersTicketForm = await UserService().getUsers();
     setState(() {});
   }
 

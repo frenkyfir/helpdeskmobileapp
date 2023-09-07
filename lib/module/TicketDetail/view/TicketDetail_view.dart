@@ -48,23 +48,34 @@ class TicketdetailView extends StatefulWidget {
                           controller.subject = value;
                         },
                       ),
+                      if (controller.usersTicketForm.isNotEmpty)
+                        Builder(builder: (context) {
+                          List<Map<String, dynamic>> items = [];
+                          for (var item in controller.usersTicketForm) {
+                            items.add({
+                              "label": item["name"],
+                              "value": item["id"],
+                            });
+                          }
+                          return QDropdownField(
+                            label: "Support",
+                            validator: Validator.required,
+                            items: items,
+                            value: controller.user_id,
+                            onChanged: (value, label) {
+                              controller.user_id = value;
+                            },
+                          );
+                        }),
                       QMemoField(
-                        label: "Description",
+                        label: "Problem Detail",
                         validator: Validator.required,
-                        value: controller.description,
+                        value: controller.problemDetail,
                         onChanged: (value) {
                           controller.description = value;
                         },
                       ),
-                      QTextField(
-                        enabled: false,
-                        label: "Assign To",
-                        validator: Validator.required,
-                        value: controller.userName,
-                        onChanged: (value) {
-                          controller.userName = value;
-                        },
-                      ),
+
                       if (controller.statusDetailTicket.isNotEmpty)
                         Builder(builder: (context) {
                           List<Map<String, dynamic>> items = [];
@@ -78,17 +89,13 @@ class TicketdetailView extends StatefulWidget {
                             label: "Status",
                             validator: Validator.required,
                             items: items,
-                            onChanged: (value, label) {},
+                            value: controller.status_id,
+                            onChanged: (value, label) {
+                              controller.status_id = value;
+                            },
                           );
                         }),
 
-                      QTextField(
-                        enabled: false,
-                        label: "Open By",
-                        validator: Validator.required,
-                        value: controller.openBy,
-                        onChanged: (value) {},
-                      ),
                       QMemoField(
                         label: "Resolution",
                         validator: Validator.required,
@@ -111,11 +118,13 @@ class TicketdetailView extends StatefulWidget {
           ),
         ),
       ),
-      bottomNavigationBar: QButton(
-        label: "Update",
-        onPressed: () async {
-          await controller.doSave();
-        },
+      bottomNavigationBar: Visibility(
+        child: QButton(
+          label: "Update",
+          onPressed: () async {
+            await controller.doSave();
+          },
+        ),
       ),
     );
   }

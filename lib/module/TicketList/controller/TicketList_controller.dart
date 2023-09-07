@@ -11,7 +11,6 @@ class TicketlistController extends State<TicketlistView> {
     instance = this;
     getTickets();
     getTicketsClosed();
-    // getStatusList();
     super.initState();
   }
 
