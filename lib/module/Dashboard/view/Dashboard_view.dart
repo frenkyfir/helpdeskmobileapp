@@ -17,7 +17,28 @@ class DashboardView extends StatefulWidget {
         child: Container(
           padding: const EdgeInsets.all(10.0),
           child: Column(
-            children: const [],
+            children: [
+              GridView.builder(
+                padding: EdgeInsets.zero,
+                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                  childAspectRatio: 1.0,
+                  crossAxisCount: 2,
+                  mainAxisSpacing: 6,
+                  crossAxisSpacing: 6,
+                ),
+                itemCount: 4,
+                shrinkWrap: true,
+                physics: ScrollPhysics(),
+                itemBuilder: (BuildContext context, int index) {
+                  return Container(
+                    color: Colors.red,
+                    child: Column(
+                      children: [],
+                    ),
+                  );
+                },
+              ),
+            ],
           ),
         ),
       ),

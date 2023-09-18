@@ -131,7 +131,10 @@ class TicketlistView extends StatefulWidget {
           ],
         ),
         floatingActionButton: FloatingActionButton(
-          child: const Icon(Icons.add),
+          child: const Icon(
+            MdiIcons.plus,
+            size: 20.0,
+          ),
           onPressed: () async {
             await Get.to(TicketformView());
             controller.getTickets();

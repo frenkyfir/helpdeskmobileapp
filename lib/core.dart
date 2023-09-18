@@ -20,7 +20,6 @@ export 'package:hyper_ui/module/TicketList/controller/TicketList_controller.dart
 export 'package:hyper_ui/module/TicketList/view/TicketList_view.dart';
 export 'package:hyper_ui/module/UserProfile/controller/UserProfile_controller.dart';
 export 'package:hyper_ui/module/UserProfile/view/UserProfile_view.dart';
-export 'package:hyper_ui/service/ok.dart';
 export 'package:hyper_ui/service/ticket_service/ticket_service.dart';
 export 'package:hyper_ui/setup.dart';
 export 'package:hyper_ui/shared/theme/theme.dart';

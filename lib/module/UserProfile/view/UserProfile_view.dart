@@ -120,6 +120,18 @@ class UserprofileView extends StatefulWidget {
                 ),
               ),
               Divider(),
+              InkWell(
+                onTap: () => Get.offAll(LoginView()),
+                child: const ListTile(
+                  leading: Icon(MdiIcons.logout),
+                  minLeadingWidth: 0.0,
+                  title: Text("Log Out"),
+                  trailing: Icon(
+                    Icons.chevron_right,
+                    size: 24.0,
+                  ),
+                ),
+              ),
             ],
           ),
         ),

@@ -23,9 +23,7 @@ class MainnavigationView extends StatefulWidget {
           index: controller.selectedIndex,
           children: [
             TicketlistView(),
-            Container(
-              color: Colors.green,
-            ),
+            DashboardView(),
             UserprofileView(),
           ],
         ),
